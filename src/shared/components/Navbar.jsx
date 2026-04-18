@@ -1,0 +1,102 @@
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { LogInIcon, Menu, X } from "lucide-react";
+import Button from "../components/ui/Button.jsx";
+import { assets } from "../../assets/assets.js";
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "Companions", path: "/companions" },
+    { name: "Trip Planner", path: "/trip-planner" },
+    { name: "Contact Us", path: "/contact-us" },
+    { name: "About", path: "/about" },
+  ];
+
+  return (
+    <nav className="sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center gap-3">
+          <div className="">
+            <img
+              src={assets.logo1}
+              alt="Masr Mate Logo"
+              className="w-12 h-12"
+            />
+          </div>
+          <span className="text-2xl font-bold tracking-tight text-[#003366]">
+            Masr Mate
+          </span>
+        </div>
+
+        {/* Desktop Navigation - Pill Shape */}
+        <div className="hidden md:flex items-center border border-[#003366] bg-gray-50 rounded-full px-2 py-1.5 gap-1">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `px-6 py-2.5 text-sm font-medium rounded-full transition-all ${
+                  isActive
+                    ? "bg-white border border-[#003366] font-medium hover:text-[#003366] text-[#003366]"
+                    : "text-gray-600 hover:text-[#003366]"
+                }`
+              }
+            >
+              {item.name}
+            </NavLink>
+          ))}
+        </div>
+
+        {/* Auth Buttons */}
+        <div className="hidden md:flex items-center gap-3">
+          <Button variant="secondary" size="sm" icon={LogInIcon}>
+            Login
+          </Button>
+          <Button variant="primary" size="sm">
+            Register
+          </Button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden p-2 text-gray-700"
+        >
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden border-t bg-white px-6 py-6">
+          <div className="flex flex-col gap-4">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className="py-3 text-lg font-medium text-gray-700"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.name}
+              </NavLink>
+            ))}
+
+            <div className="pt-4 border-t flex flex-col gap-3">
+              <Button variant="outline" fullWidth>
+                Login
+              </Button>
+              <Button variant="primary" fullWidth>
+                Get started
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
