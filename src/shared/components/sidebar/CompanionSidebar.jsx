@@ -16,12 +16,10 @@ const CompanionSidebar = () => {
       icon: <LayoutDashboard />,
     },
     {
-      name: "Availability",
-      path: "/companion/availability",
+      name: "Profile",
+      path: "/companion/profile",
       icon: <Calendar />,
     },
-    { name: "Bookings", path: "/companion/bookings", icon: <Users /> },
-    { name: "Earnings", path: "/companion/earnings", icon: <DollarSign /> },
     { name: "Settings", path: "/companion/settings", icon: <Settings /> },
   ];
 
