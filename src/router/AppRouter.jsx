@@ -11,6 +11,12 @@ import PageNotFound from "../features/common/PageNotFound";
 import Unauthorized from "../features/common/Unauthorized";
 import Error500 from "../features/common/Error500";
 
+//COMPANION DASHBOARD
+import Dashboard from "../features/companionDashboard/Dashboard/Dashboard"
+import Profile from "../features/companionDashboard/Profile/Profile"
+import Settings from "../features/companionDashboard/Settings/Settings"
+
+
 // Auth Pages
 
 // Main Pages
@@ -58,7 +64,10 @@ function AppRouter() {
             index
             element={<Navigate to="/companion/dashboard" replace />}
           />
-          <Route path="dashboard" element={<div>Companion Dashboard</div>} />
+          <Route path="dashboard" element={<Dashboard/>} />
+          <Route path="profile" element={<Profile/>} />
+          <Route path="settings" element={<Settings/>} />
+
         </Route>
 
         {/* =================== ADMIN DASHBOARD ===================*/}
