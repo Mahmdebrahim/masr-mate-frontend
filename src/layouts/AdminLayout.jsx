@@ -16,11 +16,13 @@ const AdminLayout = () => {
           <DashboardTopbar />
 
           {/* Page Content */}
-          <main className="flex-1 overflow-auto p-6 bg-white">
-            <Outlet />
+          <main className="flex-1 overflow-auto ">
+            <div className="p-6">
+              <Outlet />
+            </div>
+            {/* Footer */}
+            <DashboardFooter />
           </main>
-          {/* Footer */}
-          <DashboardFooter />
         </div>
       </div>
     </>
