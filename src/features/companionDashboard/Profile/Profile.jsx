@@ -41,7 +41,6 @@ export default function Profile() {
                     variant = "primary"
                     size = "md"
                     icon = {Pencil}
-                    
                 >Edit Profile Info</Button>
             </div>
             </div>

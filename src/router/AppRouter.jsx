@@ -21,6 +21,8 @@ import Settings from "../features/companionDashboard/Settings/Settings"
 
 // Main Pages
 import HomePage from "../features/home/Home";
+import Payment from "../features/payment/Payment/Payment";
+import ConfirmedPayment from "../features/payment/ConfirmedPayment/ConfirmedPayment";
 
 // Protected Route
 function ProtectedRoute({ allowedRoles, children }) {
@@ -48,7 +50,9 @@ function AppRouter() {
 
         {/* ======== MAIN LAYOUT (Home, Companions, etc.)======= */}
         <Route path="/" element={<MainLayout />} errorElement={<Error500 />}>
-          <Route index element={<HomePage />} />
+        <Route index element={<HomePage />} />
+        <Route path="/payment" element={<Payment />} errorElement={<Error500 />}></Route>
+        <Route path="/CofirmedPayment" element={<ConfirmedPayment />} errorElement={<Error500 />}></Route>
         </Route>
 
         {/* ================ COMPANION DASHBOARD ================= */}
@@ -67,6 +71,7 @@ function AppRouter() {
           <Route path="dashboard" element={<Dashboard/>} />
           <Route path="profile" element={<Profile/>} />
           <Route path="settings" element={<Settings/>} />
+          
 
         </Route>
 
@@ -79,9 +84,15 @@ function AppRouter() {
             </ProtectedRoute>
           }
         >
+
           <Route index element={<Navigate to="/admin/dashboard" replace />} />
           <Route path="dashboard" element={<div className="h-screen">Admin Dashboard</div>} />
         </Route>
+
+
+
+
+        
 
         {/* ====================== 404 ====================== */}
         <Route path="*" element={<PageNotFound />} />
