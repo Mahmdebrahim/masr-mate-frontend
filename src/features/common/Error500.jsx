@@ -1,7 +1,8 @@
 import { AlertTriangle, Home, RefreshCw } from "lucide-react";
 import Button from "../../shared/components/ui/Button";
-
+import { useNavigate } from "react-router-dom";
 export default function Error500() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
       <div className="max-w-md w-full text-center">
@@ -25,7 +26,8 @@ export default function Error500() {
           <Button
             variant="primary"
             icon={RefreshCw}
-            onClick={() => window.location.reload()}
+            className="rounded-full"
+            onClick={() => navigate("/")}
           >
             Try Again
           </Button>
@@ -33,7 +35,8 @@ export default function Error500() {
           <Button
             variant="outline"
             icon={Home}
-            onClick={() => (window.location.href = "/")}
+            className="rounded-full"
+            onClick={() => navigate("/")}
           >
             Go to Home
           </Button>

@@ -33,7 +33,7 @@ const Button = forwardRef(
         "bg-transparent border border-[#003366] text-[#003366] hover:bg-[#003366]/5",
       third: "bg-[#D4AF37] text-[#003366] hover:bg-[#d9a13f]",
       ghost: "bg-[#F8FAFC] text-[#003366] hover:bg-gray-100",
-      warning: "bg-[#E6B34B] text-white hover:bg-[#d9a13f]",
+      warning: "bg-red-500 text-white hover:bg-red-400",
     };
 
     const sizes = {

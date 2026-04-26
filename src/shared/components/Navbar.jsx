@@ -1,9 +1,10 @@
+import { assets } from "../../assets/assets.js";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { LogInIcon, Menu, X } from "lucide-react";
 import Button from "../components/ui/Button.jsx";
-import { assets } from "../../assets/assets.js";
-const Navbar = () => {
+
+export default function Navbar  () {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
@@ -15,8 +16,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm ">
-      <div className="max-w-7xl mx-auto px-4  py-4 flex items-center justify-between">
+    <nav className="sticky top-0 z-50 bg-red/55 backdrop-blur-sm ">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="">
@@ -103,5 +104,3 @@ const Navbar = () => {
     </nav>
   );
 };
-
-export default Navbar;
