@@ -1,5 +1,6 @@
 import { Star, LanguagesIcon, BadgeCheck } from "lucide-react";
 import Button from "./Button";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 export default function CompanionCard({
   name,
@@ -12,6 +13,7 @@ export default function CompanionCard({
   className = "",
 }) {
   return (
+    
     <div className="flex flex-wrap items-center justify-center gap-4">
       <div
         className={`flex-1 basis-62.5 max-w-xs bg-white rounded-2xl pb-4 overflow-hidden border border-gray-200 hover:-translate-y-1 transition duration-300 ${className}`}
@@ -51,13 +53,15 @@ export default function CompanionCard({
               {languages.map((lang, index) => (
                 <span key={index}>
                   {lang}
+                  {" "}
                   {index !== languages.length - 1 ? "," : ""}
+                  {""}
                 </span>
               ))}
             </div>
           </div>
 
-          <Button variant={"ghost"} widthFull={true} className="mt-4">
+          <Button variant= "ghost" fullWidth={true} className="mt-4">
             View Profile
           </Button>
         </div>

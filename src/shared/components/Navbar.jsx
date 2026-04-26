@@ -1,9 +1,10 @@
+import { assets } from "../../assets/assets.js";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { LogInIcon, Menu, X } from "lucide-react";
 import Button from "../components/ui/Button.jsx";
-import { assets } from "../../assets/assets.js";
-const Navbar = () => {
+
+export default function Navbar  () {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
@@ -15,7 +16,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50">
+    <nav className="sticky top-0 z-50 bg-red/55 backdrop-blur-sm ">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
@@ -26,19 +27,19 @@ const Navbar = () => {
               className="w-12 h-12"
             />
           </div>
-          <span className="text-2xl font-bold tracking-tight text-[#003366]">
+          <span className="text-xl lg:text-2xl font-bold tracking-tight hidden md:block whitespace-nowrap text-[#003366]">
             Masr Mate
           </span>
         </div>
 
         {/* Desktop Navigation - Pill Shape */}
-        <div className="hidden md:flex items-center border border-[#003366] bg-gray-50 rounded-full px-2 py-1.5 gap-1">
+        <div className="hidden lg:flex items-center border border-[#003366] bg-gray-0 rounded-full px-2 py-1.5 gap-1">
           {navItems.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `px-6 py-2.5 text-sm font-medium rounded-full transition-all ${
+                `px-3 xl:px-6 py-2.5 text-sm font-medium rounded-full transition-all whitespace-nowrap ${
                   isActive
                     ? "bg-white border border-[#003366] font-medium hover:text-[#003366] text-[#003366]"
                     : "text-gray-600 hover:text-[#003366]"
@@ -51,11 +52,16 @@ const Navbar = () => {
         </div>
 
         {/* Auth Buttons */}
-        <div className="hidden md:flex items-center gap-3">
-          <Button variant="secondary" size="sm" icon={LogInIcon}>
+        <div className="hidden lg:flex items-center gap-3">
+          <Button
+            variant="secondary"
+            size="sm"
+            className="rounded-full px-4 xl:px-8 whitespace-nowrap"
+            icon={LogInIcon}
+          >
             Login
           </Button>
-          <Button variant="primary" size="sm">
+          <Button variant="primary" size="sm" className="rounded-full px-4 xl:px-8 whitespace-nowrap">
             Register
           </Button>
         </div>
@@ -63,7 +69,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden p-2 text-gray-700"
+          className="lg:hidden p-2 text-gray-700"
         >
           {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -71,7 +77,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden border-t bg-white px-6 py-6">
+        <div className="lg:hidden absolute left-0 right-0 top-full shadow-lg border-t bg-white px-6 py-6 border-b">
           <div className="flex flex-col gap-4">
             {navItems.map((item) => (
               <NavLink
@@ -89,7 +95,7 @@ const Navbar = () => {
                 Login
               </Button>
               <Button variant="primary" fullWidth>
-                Get started
+                Register
               </Button>
             </div>
           </div>
@@ -98,5 +104,3 @@ const Navbar = () => {
     </nav>
   );
 };
-
-export default Navbar;

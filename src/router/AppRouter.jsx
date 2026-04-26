@@ -24,15 +24,15 @@ import HomePage from "../features/home/Home";
 
 // Protected Route
 function ProtectedRoute({ allowedRoles, children }) {
-  //   const { isAuthenticated, role } = useAuthStore();
+//   const { isAuthenticated, role } = useAuthStore();
 
-  //   if (!isAuthenticated()) {
-  //     return <Navigate to="/auth/login" replace />;
-  //   }
+//   if (!isAuthenticated()) {
+//     return <Navigate to="/auth/login" replace />;
+//   }
 
-  //   if (allowedRoles && !allowedRoles.includes(role)) {
-  //     return <Navigate to="/unauthorized" replace />;
-  //   }
+//   if (allowedRoles && !allowedRoles.includes(role)) {
+//     return <Navigate to="/unauthorized" replace />;
+//   }
 
   return children;
 }
@@ -80,7 +80,7 @@ function AppRouter() {
           }
         >
           <Route index element={<Navigate to="/admin/dashboard" replace />} />
-          <Route path="dashboard" element={<div>Admin Dashboard</div>} />
+          <Route path="dashboard" element={<div className="h-screen">Admin Dashboard</div>} />
         </Route>
 
         {/* ====================== 404 ====================== */}

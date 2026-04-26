@@ -9,6 +9,7 @@ const Button = forwardRef(
       size = "md",
       isLoading = false,
       icon: Icon = null,
+      iconPostion = "start",
       fullWidth = false,
       className = "",
       ...props
@@ -17,7 +18,7 @@ const Button = forwardRef(
   ) => {
     const baseClasses = `
       inline-flex items-center justify-center 
-      font-semibold rounded-xl 
+      font-semibold  
       cursor-pointer
       transition-all duration-200 
       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
@@ -25,14 +26,14 @@ const Button = forwardRef(
     `;
 
     const variants = {
-      primary: "bg-[#003366] text-white hover:bg-[#002244]",
+      primary: "bg-[#003366] text-white hover:bg-[#003366]/90",
       secondary:
         "bg-white border border-gray-300 text-[#003366] hover:bg-gray-50",
       outline:
         "bg-transparent border border-[#003366] text-[#003366] hover:bg-[#003366]/5",
+      third: "bg-[#D4AF37] text-[#003366] hover:bg-[#d9a13f]",
       ghost: "bg-[#F8FAFC] text-[#003366] hover:bg-gray-100",
-      success: "bg-green-600 text-white hover:bg-green-700",
-      warning: "bg-[#E6B34B] text-white hover:bg-[#d9a13f]",
+      warning: "bg-red-500 text-white hover:bg-red-400",
     };
 
     const sizes = {
@@ -61,10 +62,10 @@ const Button = forwardRef(
         ) : isIconOnly ? (
           <Icon className="w-6 h-6" />
         ) : (
-          <>
-            {Icon && <Icon className="w-5 h-5 mr-2" />}
+          <div className={`flex items-center gap-2 ${iconPostion === "end" ? "flex-row-reverse" : ""}`}>
             {children}
-          </>
+            {Icon && <Icon className="w-5 h-5" />}
+          </div>
         )}
       </button>
     );
